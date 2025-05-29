@@ -1,0 +1,31 @@
+@use '@angular/material' as mat;
+
+@mixin dark-theme {
+  color-scheme: dark;
+
+  @include mat.theme((
+    color: (
+      primary: mat.$violet-palette,
+      accent: mat.$green-palette,
+      warn: mat.$red-palette,
+      theme-type: dark
+    ),
+    typography: Roboto,
+    density: 0
+  ));
+
+  & {
+    --tlv-bov-primary: var(--mat-primary);
+    --tlv-bov-accent: var(--mat-accent);
+    --tlv-bov-warn: var(--mat-warn);
+    --tlv-bov-background: var(--mat-sys-surface);
+    --tlv-bov-surface: var(--mat-sys-surface-container);
+    --tlv-bov-text: var(--mat-sys-on-surface);
+    --tlv-bov-text-secondary: var(--mat-sys-on-surface-variant);
+  }
+
+  & {
+    background-color: var(--tlv-bov-background);
+    color: var(--tlv-bov-text);
+  }
+}
