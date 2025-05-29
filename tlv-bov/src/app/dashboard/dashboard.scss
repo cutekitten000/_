@@ -1,0 +1,31 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboard-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.dashboard-content {
+  padding: 80px 20px 20px;
+  flex: 1;
+  background-color: var(--tlv-bov-background);
+  color: var(--tlv-bov-text);
+}
+
+@media (max-width: 600px) {
+  .dashboard-content {
+    padding: 70px 10px 10px;
+  }
+}

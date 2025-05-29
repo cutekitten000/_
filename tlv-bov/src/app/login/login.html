@@ -1,0 +1,53 @@
+<div class="login-container">
+  <mat-card @fadeIn class="login-card">
+    <mat-card-header>
+      <mat-card-title class="login-title">TLV-BOV</mat-card-title>
+      <mat-card-subtitle>Bem-vindo de volta</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required>
+          <mat-icon matPrefix>mail</mat-icon>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+            Email é obrigatório
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+            Por favor, insira um email válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" floatLabel="always">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="password" type="password" required>
+          <mat-icon matPrefix>lock</mat-icon>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+            Senha é obrigatória
+          </mat-error>
+        </mat-form-field>
+
+        <button 
+          mat-raised-button 
+          color="primary" 
+          type="submit" 
+          [disabled]="loginForm.invalid || loading"
+          class="login-button"
+        >
+          <span *ngIf="!loading">Entrar</span>
+          <mat-spinner *ngIf="loading" diameter="24"></mat-spinner>
+        </button>
+
+        <div class="login-footer">
+          <a mat-button color="accent" routerLink="/forgot-password">Esqueceu a senha?</a>
+          <a mat-button color="primary" routerLink="/register">Criar conta</a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="login-background">
+    <div class="particle" *ngFor="let particle of particles" [style]="particle.style"></div>
+  </div>
+</div>
